@@ -2,15 +2,16 @@ package com.example.pms.Controller;
 
 
 import android.content.Context;
+import android.util.Log;
 
-import com.example.pms.Model.OwnerDatabase;
+import com.example.pms.Database.OwnerDatabase;
 import com.example.pms.Model.Plant;
 import com.example.pms.Model.Pot;
 
 import java.util.List;
 
 public class AHNMS {
-    private List<Pot> pots;
+    private List<Pot> pots = null;
     private static AHNMS INSTANCE;
 
     public static AHNMS getInstance() {
@@ -21,15 +22,36 @@ public class AHNMS {
         return INSTANCE;
     }
     public void init(Context context){
-        Credentials user = Credentials.getInstance();
-        OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
-        pots = db.potDao().getAllPots(user.getUid());
-        for(int i=0;i<pots.size();++i){
-            makeThread(i);
+        if(pots == null){
+            Credentials user = Credentials.getInstance();
+            OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
+            pots = db.potDao().getAllPots(user.getUid());
+            for(int i=0;i<pots.size();++i){
+                makeThread(i);
+            }
         }
+
+    }
+
+    public int getPotId(int idx){
+        return pots.get(idx).getPotId();
+    }
+    public boolean checkPot(int id){
+        for(int i=0;i<pots.size();++i){
+            if(pots.get(i).getPotId() == id){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void updateLevel(int index){
+        if(pots.isEmpty()){
+            return;
+        }
+        if(index >= pots.size()){
+            return;
+        }
         pots.get(index).updateLevel();
     }
 
@@ -47,22 +69,28 @@ public class AHNMS {
         pot.setPlant(plant);
         Credentials user = Credentials.getInstance();
         pot.setUid(user.getUid());
-        pots.add(pot);
+
         OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
         db.potDao().insertPot(pot);
+        int potid = db.potDao().getPotId(name);
+        pot.setPotId(potid);
+        pots.add(pot);
+       //pots.get(pots.size()-1).setPotId(potid);
 
     }
 
-    public void removePot(int id,Context context){
-        int idx = -1;
+    public void removePot(int idx,Context context){
+
+       // int idx = -1;
         OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
-        for(int i=0;i<pots.size();++i){
-            if(pots.get(i).getPotId() == id){
-                db.potDao().delete(pots.get(i));
-                idx = i;
-                break;
-            }
-        }
+        db.potDao().delete(pots.get(idx));
+//        for(int i=0;i<pots.size();++i){
+//            if(pots.get(i).getPotId() == id){
+//                db.potDao().delete(pots.get(i));
+//                idx = i;
+//                break;
+//            }
+//        }
         pots.remove(idx);
     }
     public void modifyPot(int id,Plant plant,Context context){
@@ -82,15 +110,19 @@ public class AHNMS {
         }
        // pots.remove(idx);
     }
-    public void removePlant(int id){
+    public void removePlant(int id,Context context){
         int idx = -1;
+        OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
         for(int i=0;i<pots.size();++i){
             if(pots.get(i).getPotId() == id){
-               // db.potDao().delete(pots.get(i));
-                pots.get(i).removePlant();
+                db.potDao().delete(pots.get(i));
+                idx = i;
+                Log.d("index", i + "");
                 break;
             }
         }
+//        pots.get(idx).removePlant();
+//        pots.remove(idx);
     }
     public void addPlant(int id,Plant plant){
         int idx = -1;
@@ -153,7 +185,16 @@ public class AHNMS {
 //
 //            }
 //        }
-        return pots.get(index).getPlant();
+        if(pots == null){
+            return null;
+        }
+        if(pots.isEmpty()){
+            return null;
+        }
+        if(index< pots.size()){
+            return pots.get(index).getPlant();
+        }
+        return null;
     }
 
     public void makeThread(int idx){

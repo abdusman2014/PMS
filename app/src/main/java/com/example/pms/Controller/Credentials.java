@@ -5,7 +5,7 @@ import android.content.Context;
 
 
 import com.example.pms.Model.Owner;
-import com.example.pms.Model.OwnerDatabase;
+import com.example.pms.Database.OwnerDatabase;
 
 public class Credentials {
 
@@ -39,6 +39,9 @@ public class Credentials {
        owner.setUserName(userName);
        owner.setPassword(password);
         db.userDao().insertUser(owner);
+        int uid = db.userDao().getId(userName);
+        owner.setUid(uid);
+     //  owner.setUid;
 
         return true;
     }

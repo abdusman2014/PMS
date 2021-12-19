@@ -1,4 +1,4 @@
-package com.example.pms;
+package com.example.pms.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.pms.Controller.Credentials;
+import com.example.pms.R;
 
 public class SignUp extends AppCompatActivity {
 
@@ -59,8 +59,8 @@ public class SignUp extends AppCompatActivity {
                     }
                     else{
                         //Toast.makeText(this,"SignUp successfu")
-                        Intent i1 = new Intent(SignUp.this,firstScreen.class);
-                        finishAffinity();
+                        Intent i1 = new Intent(SignUp.this, firstScreen.class);
+                       // finishAffinity();
                         startActivity(i1);
                     }
                 }

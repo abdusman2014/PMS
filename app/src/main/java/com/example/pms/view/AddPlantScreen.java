@@ -1,4 +1,4 @@
-package com.example.pms;
+package com.example.pms.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.pms.Controller.AHNMS;
 import com.example.pms.Model.Plant;
+import com.example.pms.R;
 
 public class AddPlantScreen extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
         EditText potName;
@@ -72,9 +73,13 @@ public class AddPlantScreen extends AppCompatActivity implements AdapterView.OnI
         new Thread() {
             public void run() {
                int size = potsController.getNoOfPots();
+             // int potId = potsController.getPotId(size-1);
                 while (true) {
 
-                potsController.updateLevel(size-1);
+               // if(potsController.checkPot(potId)){
+                    potsController.updateLevel(size-1);
+               // }
+
 
 
 

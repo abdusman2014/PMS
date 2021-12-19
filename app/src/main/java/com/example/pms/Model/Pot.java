@@ -8,12 +8,13 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Pot {
 
-
+    static int index = 0;
     @PrimaryKey(autoGenerate = true)
     private int potId;
     private String potName;
     @Embedded
     private Plant plant;
+    private int uid;
 
     public int getUid() {
         return uid;
@@ -23,7 +24,7 @@ public class Pot {
         this.uid = uid;
     }
 
-    private int uid;
+
 
     public void setPotId(int potId) {
         this.potId = potId;

@@ -1,4 +1,4 @@
-package com.example.pms;
+package com.example.pms.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,17 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.example.pms.Controller.AHNMS;
 import com.example.pms.Controller.Credentials;
-import com.example.pms.Model.OwnerDatabase;
-import com.example.pms.Model.Plant;
-import com.example.pms.Model.Pot;
+import com.example.pms.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 public class firstScreen extends AppCompatActivity {
 
@@ -26,6 +21,7 @@ public class firstScreen extends AppCompatActivity {
     MyOwnAdapter ad;
     FloatingActionButton addBtn;
     TextView heading;
+    AHNMS potsController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +44,7 @@ public class firstScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i1 = new Intent(firstScreen.this,AddPlantScreen.class);
+                Intent i1 = new Intent(firstScreen.this, AddPlantScreen.class);
                 startActivity(i1);
             }
         });
@@ -90,6 +86,10 @@ public class firstScreen extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         // put your code here...
+//        ad = new MyOwnAdapter(firstScreen.this);
+//        r1.setAdapter(ad);
+//        r1.setLayoutManager(new LinearLayoutManager(this));
             ad.notifyDataSetChanged();
+
     }
 }

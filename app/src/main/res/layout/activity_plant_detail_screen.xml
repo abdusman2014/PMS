@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlantDetailScreen">
+    tools:context=".view.PlantDetailScreen">
 
     <ImageView
         android:id="@+id/plantImg"
@@ -29,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -85,4 +86,14 @@
             android:layout_marginTop="220dp"
             android:layout_marginBottom="15dp" />
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="189dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="304dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,9 @@ public class Plant extends Specie{
     private String plantName;
     private double currentWaterLevel;
     private double currentLightIntensity;
+    public Plant(){
+        super();
+    }
 
     public String getPlanttype() {
         return planttype;

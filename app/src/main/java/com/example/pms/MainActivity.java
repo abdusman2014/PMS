@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pms.Controller.Credentials;
+import com.example.pms.view.SignUp;
+import com.example.pms.view.firstScreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1 = new Intent(MainActivity.this,SignUp.class);
+                Intent i1 = new Intent(MainActivity.this, SignUp.class);
                 startActivity(i1);
             }
         });
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     //Toast.makeText(this,"SignUp successfu")
-                    Intent i1 = new Intent(MainActivity.this,firstScreen.class);
-                    finishAffinity();
+                    Intent i1 = new Intent(MainActivity.this, firstScreen.class);
+                  //  finishAffinity();
                     startActivity(i1);
                 }
             }
