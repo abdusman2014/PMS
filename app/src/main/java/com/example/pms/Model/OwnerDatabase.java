@@ -10,9 +10,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {Owner.class}, version  = 1)
+@Database(entities = {Owner.class,Pot.class}, version  = 5)
 public abstract class OwnerDatabase extends RoomDatabase {
     public abstract OwnerDao userDao();
+    public abstract PotDao potDao();
 
     private static OwnerDatabase INSTANCE;
 
@@ -20,6 +21,7 @@ public abstract class OwnerDatabase extends RoomDatabase {
 
         if(INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context, OwnerDatabase.class, "DB_NAME")
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();
 

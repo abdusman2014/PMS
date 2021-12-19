@@ -60,6 +60,7 @@ public class SignUp extends AppCompatActivity {
                     else{
                         //Toast.makeText(this,"SignUp successfu")
                         Intent i1 = new Intent(SignUp.this,firstScreen.class);
+                        finishAffinity();
                         startActivity(i1);
                     }
                 }

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PMS">
         <activity
+            android:name=".AddPlantScreen"
+            android:exported="false" />
+        <activity
+            android:name=".PlantDetailScreen"
+            android:exported="false" />
+        <activity
             android:name=".firstScreen"
             android:exported="false" />
         <activity

@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         signIn = (Button) findViewById(R.id.signInBtn);
         userName = (EditText) findViewById(R.id.userName);
         password = (EditText) findViewById(R.id.password);
+        userName.setText("abdullah");
+        password.setText("123456789");
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     //Toast.makeText(this,"SignUp successfu")
                     Intent i1 = new Intent(MainActivity.this,firstScreen.class);
+                    finishAffinity();
                     startActivity(i1);
                 }
             }

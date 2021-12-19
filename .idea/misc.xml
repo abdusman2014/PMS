@@ -7,9 +7,12 @@
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/drawable/user_name.xml" value="0.3828125" />
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/drawable/user_name_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/layout/activity_add_plant_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/layout/activity_first_screen.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/layout/activity_plant_detail_screen.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/layout/pots_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/layout/sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/abdus/AndroidStudioProjects/PMS/app/src/main/res/mipmap-anydpi-v26/user_name.xml" value="0.22135416666666666" />
       </map>

@@ -9,7 +9,7 @@ import com.example.pms.Model.OwnerDatabase;
 
 public class Credentials {
 
-    Owner owner;
+   private Owner owner;
 
     private static Credentials INSTANCE;
 
@@ -21,6 +21,11 @@ public class Credentials {
         }
         return INSTANCE;
     }
+
+    public String getName(){
+        return owner.getUserName();
+    }
+    public int getUid(){ return owner.getUid(); }
 
     public boolean signUp(String userName,String password, Context context){
         OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
@@ -42,6 +47,7 @@ public class Credentials {
         OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
         Owner userList =db.userDao().getOwner(userName,password);
         if(userList != null){
+            owner = userList;
             return true;
         }
         else{
