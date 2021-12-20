@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         signIn = (Button) findViewById(R.id.signInBtn);
         userName = (EditText) findViewById(R.id.userName);
         password = (EditText) findViewById(R.id.password);
-        userName.setText("abdullah");
-        password.setText("123456789");
+       // userName.setText("abdullah");
+       // password.setText("123456789");
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -62,14 +62,14 @@ public class Pot {
     public void updateLevel(){
         double water = plant.getCurrentWaterLevel();
         double sunlight = plant.getCurrentLightIntensity();
-        if(water <= 10 ){
+        if(water <= 0 ){
             plant.setCurrentWaterLevel(plant.getWaterLevel());
         }
         else{
             plant.setCurrentWaterLevel(plant.getCurrentWaterLevel() - 10);
         }
         if(sunlight <= 10){
-            plant.setCurrentLightIntensity(plant.getLightIntensity());
+            plant.setCurrentLightIntensity(plant.getLightIntensity() );
         }
         else{
             plant.setCurrentLightIntensity(plant.getCurrentLightIntensity() - 10);
@@ -77,6 +77,7 @@ public class Pot {
 
 
     }
+
 
     public void updateFertilizerLevel(double fertilizerLevel){
         plant.setFertilizerLevel(fertilizerLevel);

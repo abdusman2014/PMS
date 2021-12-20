@@ -48,38 +48,7 @@ public class firstScreen extends AppCompatActivity {
                 startActivity(i1);
             }
         });
-//        Pot pot = new Pot();
-//        pot.setPotName("potName1");
-//        pot.setUid(1);
-//        Plant p = new Plant();
-//        p.setLightIntensity(10);
-//        p.setWaterLevel(
-//                10
-//        );
-//        p.setFertilizerLevel(10);
-//        p.setPlantName("plant1");
-//        pot.setPlant(p);
-//        Pot pot2 = new Pot();
-//        pot2.setPotName("potName2");
-//        pot2.setUid(2);
-//        Plant p2 = new Plant();
-//        p2.setLightIntensity(10);
-//        p2.setWaterLevel(
-//                10
-//        );
-//        p2.setFertilizerLevel(10);
-//        p2.setPlantName("plant2");
-//        pot2.setPlant(p2);
-//
-//        OwnerDatabase db  = OwnerDatabase.getDbInstance(firstScreen.this);
-//        db.potDao().insertPot(pot);
-//        db.potDao().insertPot(pot2);
-//        List<Pot> pots;
-//        pots = db.potDao().getAllPots(2);
 
-
-       // user = Credentials.getInstance();
-//        t1.setText(pots.get(0).getPotName() + ", " + pots.get(0).getPlant().getPlantName() );
     }
 
     @Override
