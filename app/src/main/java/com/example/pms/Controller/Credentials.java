@@ -3,7 +3,8 @@ package com.example.pms.Controller;
 import android.content.Context;
 
 
-
+import com.example.pms.Exceptions.PasswordException;
+import com.example.pms.Exceptions.UserNameException;
 import com.example.pms.Model.Owner;
 import com.example.pms.Database.OwnerDatabase;
 
@@ -31,8 +32,12 @@ public class Credentials {
         OwnerDatabase db  = OwnerDatabase.getDbInstance(context);
 
 
-
-        if(!validate(password)){
+        try {
+            //if(!validate(password)){
+             //   return false;
+                validate(password,userName);
+           // }
+        } catch (PasswordException | UserNameException e) {
             return false;
         }
         owner = new Owner();
@@ -62,9 +67,13 @@ public class Credentials {
 
     }
 
-    private boolean validate(String password){
+    private boolean validate(String password,String username) throws PasswordException, UserNameException {
         if(password.length()<8){
-            return false;
+            throw new PasswordException();
+          //  return false;
+        }
+        if(username.length()<5){
+            throw new UserNameException();
         }
         return true;
     }

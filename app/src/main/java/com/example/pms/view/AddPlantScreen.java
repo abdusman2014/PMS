@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.pms.Controller.AHNMS;
+import com.example.pms.Exceptions.ValueException;
 import com.example.pms.Model.Plant;
 import com.example.pms.R;
 
@@ -59,6 +60,12 @@ public class AddPlantScreen extends AppCompatActivity implements AdapterView.OnI
                     Toast.makeText(AddPlantScreen.this,"Fields can not be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                try {
+                    validateLevel();
+                } catch (ValueException e) {
+                    Toast.makeText(AddPlantScreen.this,"Please enter value of water level/light intensity greater than 10", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Plant plant =  new Plant();
                 plant.setWaterLevel(Double.parseDouble(waterLevel.getText().toString()));
                 plant.setCurrentLightIntensity(Double.parseDouble(lightIntensity.getText().toString()));
@@ -74,6 +81,14 @@ public class AddPlantScreen extends AppCompatActivity implements AdapterView.OnI
 
             }
         });
+    }
+
+    public void validateLevel() throws ValueException {
+        int waterLevelInt = Integer.parseInt(waterLevel.getText().toString());
+        int lightLevelInt = Integer.parseInt(lightIntensity.getText().toString());
+        if(waterLevelInt <=10 || lightLevelInt <=10){
+            throw  new ValueException();
+        }
     }
 
     public void makeThread(){

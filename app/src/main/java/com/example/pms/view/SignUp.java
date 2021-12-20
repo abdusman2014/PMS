@@ -56,6 +56,7 @@ public class SignUp extends AppCompatActivity {
                     signUpSuccess = ownerCredential.signUp(userName.getText().toString(),password.getText().toString(),SignUp.this);
                     if(!signUpSuccess){
                         password.setError("Password must be greater than 8 characters");
+                        userName.setError("Username must be greater than 5 characters");
                     }
                     else{
                         //Toast.makeText(this,"SignUp successfu")
