@@ -1,7 +1,14 @@
 package com.example.pms.view;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -71,12 +78,20 @@ public class AddPlantScreen extends AppCompatActivity implements AdapterView.OnI
 
     public void makeThread(){
         new Thread() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             public void run() {
                int size = potsController.getNoOfPots();
              // int potId = potsController.getPotId(size-1);
                 while (true) {
 
                // if(potsController.checkPot(potId)){
+                  Plant plant =  potsController.retrieveInfo(size-1);
+                  if(plant != null){
+                      if(plant.getCurrentWaterLevel() == 10){
+                            sendNotification( AddPlantScreen.this, plant);
+                      }
+                     // sendNotification(AddPlantScreen.this,plant);
+                  }
                     potsController.updateLevel(size-1);
                // }
 
@@ -127,5 +142,26 @@ public class AddPlantScreen extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void sendNotification(Context context, Plant plant) {
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel("ID", "Name", importance);
+            notificationManager.createNotificationChannel(notificationChannel);
+            builder = new NotificationCompat.Builder(getApplicationContext(), notificationChannel.getId());
+        } else {
+            builder = new NotificationCompat.Builder(getApplicationContext());
+        }
+
+        builder = builder
+                .setSmallIcon(R.drawable.sunflower)
+                .setContentTitle("Water Time")
+                .setContentText("Watering your Plant: " + plant.getPlantName())
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setAutoCancel(true);
+        notificationManager.notify(0, builder.build());
     }
 }
