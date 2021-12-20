@@ -1,6 +1,7 @@
 package com.example.pms.Controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import android.content.Context;
 
@@ -8,8 +9,6 @@ import androidx.test.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import java.lang.reflect.Method;
 
 public class CredentialsTest {
 
@@ -20,7 +19,7 @@ public class CredentialsTest {
 
 
     @Before
-    public void setUp()  {
+    public void setUp() {
 
         credentials = Credentials.getInstance();
         username = "test123";
@@ -32,20 +31,23 @@ public class CredentialsTest {
     @Test
     public void signUp() {
 
-        assertTrue(credentials.signUp(username,password,context));
+        assertTrue(credentials.signUp(username, password, context));
 
     }
+
     @Test
-    public void invalidSignup(){
-        assertFalse(credentials.signUp(username,"1", context));
+    public void invalidSignup() {
+        assertFalse(credentials.signUp(username, "1", context));
     }
+
     @Test
-    public void logIn(){
-        assertTrue(credentials.logIn(username,password,context));
+    public void logIn() {
+        assertTrue(credentials.logIn(username, password, context));
 
     }
+
     @Test
-    public void invalidLogin(){
+    public void invalidLogin() {
         assertFalse(credentials.logIn("XyC", "Xyyyyvvv", context));
     }
 
